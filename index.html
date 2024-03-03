@@ -2,14 +2,17 @@
 <head>
     <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Marina Marques | Front-End Developer</title>
+<title>Vishakha | Portfolio</title>
 <meta name="description" content="I'm a front-end developer based in Lisbon, Portugal.
                 Avid self-learner, proactive, organized and dedicated to everything I do.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- icon -->
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-light-blue.css">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link href="favicon.ico" rel="shortcut icon">
 <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
 <!-- css -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700|Montserrat:400,700">
 </head>
@@ -162,9 +165,620 @@ copyright.innerHTML = '© Marina Marques '+ year;
 </script>
 
 <style>
-/*
-Please do not claim this website as your own. You don't have to give me credit but DON'T claim it's your code. When you use this as a base for your website please remove all tracking (Google Analytics, Heap).
-*/
+    @import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+    @use postcss-nested;
+    
+    .shelf {
+      position: relative;
+      width: 30rem;
+      height: 14rem;
+      margin: 0 auto;
+      border: 0.5rem solid #074c76;
+      border-radius: 0.5rem;
+      background-color: rgb(1, 49, 41);
+      perspective: 130rem;
+      box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.2);
+    }
+    .door {
+      position: absolute;
+      width: 14.8rem;
+      height: 14rem;
+      display: flex;
+      box-sizing: border-box;
+      padding: 1rem;
+      background-color: #9becdf;
+      align-items: center;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+      outline: 1px solid transparent;
+      &::before {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.1);
+        content: "";
+      }
+      &.left {
+        border-radius: 0 0.75rem 0.75rem 0;
+        justify-content: flex-end;
+        animation: 
+          leftDoorOpen 3.5s ease-out forwards 1s,
+          leftDoorFlap 15s linear infinite forwards 9s;
+        transform-origin: 0 0 0;
+      }
+      &.right {
+        right: 0;
+        border-radius: 0.75rem 0 0 0.75rem;
+        animation: 
+          rightDoorOpen 3s ease-out forwards 1.5s,
+          rightDoorFlap 10s linear infinite forwards 8s;
+        transform-origin: 100% 0 0;
+      }
+    }
+    .book {
+      position: absolute;
+      box-sizing: border-box;
+      padding: 0.8rem 4rem 0.8rem 2rem;
+      border-radius: 0.25rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      cursor: pointer;
+      box-shadow: inset 0 0 0.75rem rgba(255, 255, 255, 0.1);
+      &.home-page {
+        transform: rotate(-120deg) translate(-12.4rem, 3rem);
+        transform-origin: 0;
+        right: 12rem;
+        bottom: 7.3rem;
+      }
+      &.about-us {
+        transform: rotate(-90deg) translate(-8.4rem, 6.1rem);
+        transform-origin: 0;
+        outline: 1px solid transparent;
+        right: 19rem;
+        bottom: 6.3rem;
+      }
+      &.contact {
+        right: 2rem;
+        bottom: 0.2rem;
+        border-radius: 0.3rem 0 0 0.3rem;
+      }
+       &.faq {
+        right: 0.8rem;
+        bottom: 3.3rem;
+        border-radius: 0.3rem 0 0 0.3rem;
+      }
+      &.not-found {
+        width: 12rem;
+        height: 3.5rem;
+        border: 1px dashed rgba(255, 255, 255, 0.3);
+        background-color: transparent;
+        transform: rotate(-90deg) translate(-12rem, 13rem) scale(1);
+        transform-origin: 0;
+        cursor: default;
+        animation: bookFadeOut 1s 3s infinite forwards;
+        
+        &::after {
+          display: block;
+          width: 10rem;
+          padding-left: 5rem;
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='30'><path fill='rgb(255, 255, 255)' d='M7.688,3.737C6.1,10.409,4.624,16.982,2.475,23.517c-0.424,1.29,0.724,2.338,1.957,1.916 c5.879-2.021,11.743-4.107,17.409-6.696c1.246-0.572,0.443-2.366-0.815-1.932c-3.856,1.333-7.695,2.69-11.565,3.959 c2.879-2.526,5.485-5.215,9.013-7.17c4.441-2.459,9.299-4.109,14.281-4.915c10.903-1.772,22.052,0.562,31.979,5.04 c9.241,4.162,12.895,8.725,13.164,4.942c0.121-1.69-5.57-4.953-14.125-8.714C53.19,5.292,41.094,3.539,29.636,6.058 c-7.122,1.567-16.708,5.374-22.064,11.544c1.359-4.455,2.461-9.028,3.032-13.563C10.852,2.091,8.12,1.927,7.688,3.737z'/></svg>");
+          background-repeat: no-repeat;
+          background-size: 4rem;
+          background-position: left center;
+          font-family: "Dancing Script";
+          text-transform: lowercase;
+          font-size: 25px;
+          content: "this page can't be found";
+          transform: rotate(90deg) translate(6rem, -1rem);
+          opacity: 0.3; 
+        }
+      }
+      &:hover:not(.not-found) {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+    @keyframes leftDoorOpen {
+      60% {transform: rotateY(-115deg)}
+      100% {transform: rotateY(-110deg)}
+    }
+    @keyframes rightDoorOpen {
+      60% {transform: rotateY(125deg)}
+      100% {transform: rotateY(120deg)}
+    }
+    @keyframes rightDoorFlap {
+      0% { transform: rotateY(120deg)}
+      5% {transform: rotateY(125deg)}
+      15% {transform: rotateY(117deg)}
+      25% {transform: rotateY(123deg)}
+      30% {transform: rotateY(120deg)}
+      100% {transform: rotateY(120deg)}
+    }
+    @keyframes leftDoorFlap {
+      0% { transform: rotateY(-110deg)}
+      5% {transform: rotateY(-115deg)}
+      15% {transform: rotateY(-107deg)}
+      25% {transform: rotateY(-113deg)}
+      30% {transform: rotateY(-110deg)}
+      100% {transform: rotateY(-110deg)}
+    }
+    @keyframes bookFadeOut {
+      50% {border: 1px dashed rgba(255, 255, 255, 0.1);}
+    };
+   
+   
+   
+   
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+    
+    
+    .cards {
+      display: grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .cards_item {
+      display: flex;
+      padding: 1rem;
+    }
+    
+    .card_image {
+      height: calc(13*1.2rem);
+      padding: 1.2rem 1.2rem 0;
+      position:relative;
+    }
+    .card_image:before,
+    .card_image:after{
+      content: "";
+      position: absolute;
+      width: 20px;
+      left: 60%;
+      top: 0;
+      height: 45px;
+      background: #e6e6e6b8;
+      transform: rotate(45deg);
+    }
+    .card_image:after{
+      transform: rotate(-45deg);
+      top:auto;
+      bottom:-22px;
+      left:40%;
+    }
+    .card_image img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    
+    .cards_item {
+      filter:drop-shadow(0 0 5px rgba(0, 0, 0, 0.25));
+    }
+    
+    
+    .card {
+      background-color: white;
+      border-radius: 0.25rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      padding-left: 30px;
+      background: repeating-linear-gradient(#0000 0 calc(1.2rem - 1px),#66afe1 0 1.2rem) right bottom /100% 100%,linear-gradient(red 0 0) 30px 0/3px 100% #fff;
+      background-repeat: no-repeat;
+      line-height: 1.6rem;
+      -webkit-mask:radial-gradient(circle .8rem at 2px 50%,#0000 98%,#000)0 0/100% 2.4rem;
+    }
+    
+    .card_content {
+      padding: 1.6rem;
+    }
+    
+    h2.card_title,p {
+      margin: 1.2rem 0;
+    }
+    h2.card_title {
+        font-size: 1.3em;
+    }
+    
+
+    article {
+        --img-scale: 1.001;
+        --title-color: black;
+        --link-icon-translate: -20px;
+        --link-icon-opacity: 0;
+        position: relative;
+        border-radius: 16px;
+        box-shadow: none;
+        background: #fff;
+        transform-origin: center;
+        transition: all 0.4s ease-in-out;
+        overflow: hidden;
+      }
+      
+      article a::after {
+        position: absolute;
+        inset-block: 0;
+        inset-inline: 0;
+        cursor: pointer;
+        content: "";
+      }
+      
+      /* basic article elements styling */
+      article h2 {
+        margin: 0 0 18px 0;
+        font-family: "Bebas Neue", cursive;
+        font-size: 1.9rem;
+        letter-spacing: 0.06em;
+        color: var(--title-color);
+        transition: color 0.3s ease-out;
+      }
+      
+      figure {
+        margin: 0;
+        padding: 0;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+      }
+      
+      article img {
+        max-width: 100%;
+        transform-origin: center;
+        transform: scale(var(--img-scale));
+        transition: transform 0.4s ease-in-out;
+      }
+      
+      .article-body {
+        padding: 24px;
+      }
+      
+      article a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: #28666e;
+      }
+      
+      article a:focus {
+        outline: 1px dotted #28666e;
+      }
+      
+      article a .icon {
+        min-width: 24px;
+        width: 24px;
+        height: 24px;
+        margin-left: 5px;
+        transform: translateX(var(--link-icon-translate));
+        opacity: var(--link-icon-opacity);
+        transition: all 0.3s;
+      }
+      
+      /* using the has() relational pseudo selector to update our custom properties */
+      article:has(:hover, :focus) {
+        --img-scale: 1.1;
+        --title-color: #28666e;
+        --link-icon-translate: 0;
+        --link-icon-opacity: 1;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+      }
+      
+      
+      /************************ 
+      Generic layout (demo looks)
+      **************************/
+      
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      
+      
+      
+      .articles {
+        display: grid;
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: 24px;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+      }
+      
+      @media screen and (max-width: 960px) {
+        article {
+          container: card/inline-size;
+        }
+        .article-body p {
+          display: none;
+        }
+      }
+      
+      @container card (min-width: 380px) {
+        .article-wrapper {
+          display: grid;
+          grid-template-columns: 100px 1fr;
+          gap: 16px;
+        }
+        .article-body {
+          padding-left: 0;
+        }
+        figure {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        figure img {
+          height: 100%;
+          aspect-ratio: 1;
+          object-fit: cover;
+        }
+      }
+      
+      .sr-only:not(:focus):not(:active) {
+        clip: rect(0 0 0 0); 
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap; 
+        width: 1px;
+      }
+    .ag-format-container {
+        width: 1142px;
+        margin: 0 auto;
+      }
+      
+      .ag-courses_box {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+      
+        padding: 50px 0;
+      }
+      .ag-courses_item {
+        -ms-flex-preferred-size: calc(33.33333% - 30px);
+        flex-basis: calc(33.33333% - 30px);
+      
+        margin: 0 15px 30px;
+      
+        overflow: hidden;
+      
+        border-radius: 28px;
+      }
+      .ag-courses-item_link {
+        display: block;
+        padding: 30px 20px;
+        background-color: #121212;
+      
+        overflow: hidden;
+      
+        position: relative;
+      }
+      .ag-courses-item_link:hover,
+      .ag-courses-item_link:hover .ag-courses-item_date {
+        text-decoration: none;
+        color: #FFF;
+      }
+      .ag-courses-item_link:hover .ag-courses-item_bg {
+        -webkit-transform: scale(10);
+        -ms-transform: scale(10);
+        transform: scale(10);
+      }
+      .ag-courses-item_title {
+        min-height: 87px;
+        margin: 0 0 25px;
+      
+        overflow: hidden;
+      
+        font-weight: bold;
+        font-size: 22px;
+        color: #FFF;
+      
+        z-index: 2;
+        position: relative;
+      }
+      .ag-courses-item_date-box {
+        font-size: 12px;
+        color: #FFF;
+      
+        z-index: 2;
+        position: relative;
+      }
+      .ag-courses-item_date {
+        font-weight: bold;
+        color: #f9b234;
+      
+        -webkit-transition: color .5s ease;
+        -o-transition: color .5s ease;
+        transition: color .5s ease
+      }
+      .ag-courses-item_bg {
+        height: 128px;
+        width: 128px;
+        background-color: #f9b234;
+      
+        z-index: 1;
+        position: absolute;
+        top: -75px;
+        right: -75px;
+      
+        border-radius: 50%;
+      
+        -webkit-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+      }
+      .ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+        background-color: #3ecd5e;
+      }
+      .ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+        background-color: #e44002;
+      }
+      .ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+        background-color: #952aff;
+      }
+      .ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+        background-color: #cd3e94;
+      }
+      .ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+        background-color: #4c49ea;
+      }
+      
+      
+      
+      @media only screen and (max-width: 979px) {
+        .ag-courses_item {
+          -ms-flex-preferred-size: calc(50% - 30px);
+          flex-basis: calc(50% - 30px);
+        }
+        .ag-courses-item_title {
+          font-size: 24px;
+        }
+      }
+      
+      @media only screen and (max-width: 767px) {
+        .ag-format-container {
+          width: 96%;
+        }
+      
+      }
+      @media only screen and (max-width: 639px) {
+        .ag-courses_item {
+          -ms-flex-preferred-size: 100%;
+          flex-basis: 100%;
+        }
+        .ag-courses-item_title {
+          min-height: 72px;
+          line-height: 1;
+      
+          font-size: 28px;
+        }
+        .ag-courses-item_link {
+          padding: 22px 40px;
+        }
+        .ag-courses-item_date-box {
+          font-size: 16px;
+        }
+      }
+   .carousel-inner a{
+        color: #03E9F4;
+        display: inline-block;
+        font-size: 24px;
+        letter-spacing: 4px;
+        margin: 20px 40px;
+        padding: 24px 30px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.5s;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+    }
+    
+    .carousel-inner a:nth-child(1){
+        filter: hue-rotate(290deg);
+    }
+    
+    .carousel-inner a:nth-child(3){
+        filter: hue-rotate(110deg);
+    }
+    
+    .carousel-inner a:hover{
+        background: #03E9F4;
+        box-shadow: 0 0 5px #03E9F4, 0 0 25px #03E9F4, 0 0 50px #03E9F4, 0 0 200px #03E9F4;
+        color: #050801;
+    }
+    
+    .carousel-inner a span{
+        display: block;
+        position: absolute;
+    }
+    
+    .carousel-inner a span:nth-child(1){
+        animation: animate1 1s linear infinite;
+        background: linear-gradient(90deg, transparent, #03E9F4);
+        height: 2px;
+        left: -100%;
+        top: 0;
+        width: 100%;
+    }
+    
+    @keyframes animate1{
+        0%{
+            left: -100%;
+        }
+        50%, 100%{
+            left: 100%;	
+        }
+    }
+    
+    .carousel-inner a span:nth-child(2){
+        animation: animate2 1s linear infinite;
+        animation-delay: 0.25s;
+        background: linear-gradient(180deg, transparent, #03E9F4);
+        height: 100%;
+        top: -100%;
+        right: 0;
+        width: 2px;
+    }
+    
+    @keyframes animate2{
+        0%{
+            top: -100%;
+        }
+        50%, 100%{
+            top: 100%;	
+        }
+    }
+    
+    .carousel-inner a span:nth-child(3){
+        animation: animate3 1s linear infinite;
+        animation-delay: 0.5s;
+        background: linear-gradient(270deg, transparent, #03E9F4);
+        bottom: 0;
+        height: 2px;
+        right: -100%;
+        width: 100%;
+    }
+    
+    @keyframes animate3{
+        0%{
+            right: -100%;
+        }
+        50%, 100%{
+            right: 100%;	
+        }
+    }
+    
+    .carousel-inner  a span:nth-child(4){
+        animation: animate4 1s linear infinite;
+        animation-delay: 0.75s;
+        background: linear-gradient(360deg, transparent, #03E9F4);
+        bottom: -100%;
+        height: 100%;
+        left: 0;
+        width: 2px;
+    }
+    
+    @keyframes animate4{
+        0%{
+            bottom: -100%;
+        }
+        50%, 100%{
+            bottom: 100%;	
+        }
+    }
 
 body {
 	font-family: 'Roboto', sans-serif;
@@ -288,121 +902,6 @@ h5 {
 /* END PRELOADER */
 
 
-/* start header */
-
-.navbar-fixed-top {
-	background-color: #008080;
-}
-
-.navbar-brand {
-	padding: 0px 15px;
-	height: 56px;
-	margin-left: 0;
-}
-
-.navbar {
-	margin-bottom: 0px;
-	border: none;
-}
-
-.navbar-inverse .navbar-toggle:focus,
-.navbar-inverse .navbar-toggle:hover {
-	background-color: #40E0D0;
-}
-
-.navbar-inverse .navbar-toggle {
-	border: none;
-}
-
-.navbar-inverse .navbar-collapse,
-.navbar-inverse .navbar-form {
-	border: none;
-}
-
-.navbar-toggle .icon-bar {
-	width: 35px;
-	height: 5px
-}
-
-#ResponsiveNav li a {
-	font-size: 16px;
-	color: #fff;
-	font-weight: 700;
-	display: inline-block;
-	position: relative;
-	text-decoration: none;
-	overflow: hidden;
-	-webkit-transition: all .40s ease-in-out;
-	transition: all .40s ease-in-out;
-	font-family: 'Roboto', sans-serif;
-	text-transform: lowercase;
-}
-
-#ResponsiveNav li a:after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	width: 0;
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
-	height: 3px;
-	background: #40E0D0;
-	-webkit-transition: .35s;
-	transition: .35s;
-}
-
-#ResponsiveNav li a:hover {
-	color: #40E0D0;
-}
-
-#ResponsiveNav ul li a:hover:after,
-#ResponsiveNav ul li a:focus:after,
-#ResponsiveNav ul li a:active:after {
-	width: 70%;
-}
-
-button.navbar-toggle.collapsed {
-	background-color: #008080;
-	border: none;
-}
-
-.navbar-default .navbar-toggle:focus,
-.navbar-default .navbar-toggle:hover {
-	background-color: #40E0D0;
-	border: none;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-	background-color: #fff;
-}
-
-
-/*/ start hamburger menu desktop overwrite bootstrap /*/
-
-.navbar-header {
-	float: none;
-}
-
-.navbar-toggle {
-	display: block;
-}
-
-.navbar-collapse.collapse {
-	display: none!important;
-}
-
-.navbar-nav {
-	float: none!important;
-}
-
-.navbar-nav>li {
-	float: none;
-}
-
-.navbar-collapse.collapse.in {
-	display: block !important;
-}
 
 
 /*/ end hamburger menu desktop overwrite bootstrap /*/
@@ -681,6 +1180,8 @@ div.button-social a:hover {
 	margin-top: 50px;
 	width: 100%;
 	height: auto;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .stats {
@@ -1053,7 +1554,7 @@ div.button-weblink {
 .testimionals-bg {
 	width: 100%;
 	height: auto;
-	background: url(http://marinamarques.pt/img/mm_testimionals.jpg) no-repeat top center scroll;
+	background: url('https://i.gifer.com/LSsT.gif') no-repeat top center scroll;
 	background-size: cover;
 	-o-background-size: cover;
 }
@@ -1153,6 +1654,97 @@ footer a:visited footer a:focus {
 		margin-bottom: 15%;
 	}
 }
+.navbar-brand{
+    font-family: "Dancing Script", cursive;
+    font-weight: 700;
+    font-size: 2em;
+  }
+  
+  .navbar li{
+    text-transform: capitalize;
+  }
+  
+  #splash{
+    background-image: url(https://www.webprofits.in/images/portfolio.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    margin-top: 50px;
+    padding-top: 15%;
+    padding-bottom: 50px;
+    color: #fff;
+    font-size: 3em;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.5),
+                 0px 18px 23px rgba(0,0,0,0.1);
+  }
+  
+    #splash h1{
+      font-size: 2em;
+    }
+  
+    #splash a{
+      color: #fff;
+    }
+  
+    #splash a:hover{
+      color: #e7e7e7;
+    }
+  
+  #portfolio{
+    background-image: url(![VarunPMjpg](https://user-images.githubusercontent.com/42829148/55425712-b74e4880-55a0-11e9-8569-10f625107ca5.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    padding-bottom: 50px;
+    color: #fff;
+  }
+  
+    #portfolio h1{
+      font-size: 5em;
+      text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                   0px 8px 13px rgba(0,0,0,0.5),
+                   0px 18px 23px rgba(0,0,0,0.1);
+    }
+  
+  .thumbnail{
+    position: relative;
+  }
+  
+    .thumbnail img{
+      min-height: 250px;
+      min-width: 300px;
+    }
+  
+  .thumbnail-hover{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 99%;
+    width: 99%;
+    opacity: 0;
+    transition:2s;
+  }
+  
+      .thumbnail-hover:hover{
+      top: 2px;
+      left: 2px;
+      position: absolute;
+      height: 99%;
+      width: 99%;
+      background-color: rgba(0,0,0,0.8);
+      margin: 0 auto;
+      transition:.5s;
+      opacity: 1;
+      padding-top: 30%;
+      border-radius: 5px;
+    }
+  
+    .thumbnail-hover i{
+      text-decoration: none;
+      color: white;
+    }
 </style>
 
 <body>
@@ -1161,40 +1753,59 @@ footer a:visited footer a:focus {
 		<div id="status">&nbsp;</div>
 	</div>
 	<!-- END PRELOADER -->
-	<!-- Return to Top -->
-	<a href="javascript:" id="return-to-top"><span class="fa fa-arrow-up" aria-hidden="true"></span></a>
-	<!-- navigation -->
-	<!-- start Fixed navbar -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for mobile display -->
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#about">
-					<img alt="Marina Marques" class="navbar-brand" src="http://marinamarques.pt/img/marina_marques_logo.png">
-				</a>
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ResponsiveNav">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse navbar-right" id="ResponsiveNav">
-				<ul class="nav navbar-nav">
-					<li><a href="#about-me" class="page-scroll">ABOUT</a></li>
-					<li><a href="#portfolio" class="page-scroll">PORTFOLIO</a></li>
-					<li><a href="#services" class="page-scroll">SERVICES</a></li>
-					<li><a href="#contact" class="page-scroll">CONTACT</a></li>
-				</ul>
-			</div>
-			<!-- end collapse -->
-		</div>
-		<!-- end container fluid -->
-	</nav>
-	<!-- end navigation -->
-	<!-- intro header -->
+	
+
+<!-- Start Navigation Bar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <span class="navbar-brand">Vishakha Maruti Sonmore</span>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#intro-body">Home <span class="sr-only">(current)</span></a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#about-me" class="page-scroll">About</a></li>
+            
+    <li><a href="#testimionals" class="page-scroll">Projects</a></li>
+            <li><a href="#cert" class="page-scroll">Certificates</a></li>
+            <li><a href="#leadership" class="page-scroll">Leadership</a></li>
+            <li><a href="#nonc" class="page-scroll">Extra-Curricular</a></li>
+            <li><a href="#services" class="page-scroll">Social</a></li>
+            <li><a href="#contact" class="page-scroll">Contact</a></li>
+
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <!-- End Navagation Bar -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- intro header -->
 	<header class="intro">
-		<div class="intro-body">
+		<div class="intro-body" id="intro-body">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2">
@@ -1236,24 +1847,23 @@ footer a:visited footer a:focus {
 				<div class="col-lg-6 about-intro">
 					<div class="about-inner">
 						<div class="about-ct">
-							<img src="https://github.com/Vishakha401/Portfolio/blob/main/aboutme.png" alt="Marina Marques" class="img-responsive">
-							<div class="textbox-about hidden-xs">
-								<div class="btn button-social">
-									<a href="https://codepen.io/shvvffle/" target="_blank" alt="CodePen profile"><span class="fa fa-codepen" aria-hidden="true"></span></a>
-									<a href="https://pt.linkedin.com/in/marinamarques9" alt="LinkedIn profile" target="_blank"><span class="fa fa-linkedin" aria-hidden="true"></span></a>
-									<a href="https://github.com/shvvffle" target="_blank" alt="GitHub profile"><span class="fa fa-github" aria-hidden="true"></span></a>
-								</div>
-							</div>
+							<img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/aboutme.png" alt="hi" style="width: 1000px;", class="img-responsive"/>
+
+						
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6 about-intro-text">
-					<p>I'm a <span>front-end developer</span> and a <span>photojournalist enthusiast</span>.<br> My first experience with code was at the time everybody had a MySpace profile. I remember struggling with finding the way to change the background-color and
-						have flashy text. I used to spend hours trying to customize it and couldn't even seem to see the time get by. The excitement of having the power to structure pages on my own was amazing. It's just like lego. You start piece by piece, nobody understands
-						what you're building and tada... you have a castle.<br> Here's to building castles with code! <span class="fa fa-beer" aria-hidden="true"></span></p>
+					<p><b>"Success in IT is not just about technology; it's about delivering quality solutions that drive business growth." </b> - With over four years in the IT sector, I excel as a data-driven individual specializing in IT service delivery and quality. 
+
+                        Employing agile methodologies and analytical prowess, I've overseen successful projects in both infrastructure and application development as Project Coordinator & PMO. Certified in ITIL and Six Sigma, I'm committed to refining processes and systems vital to IT operations. 
+                        
+                        Currently pursuing a Master's in Management Information Systems at California State University, Long Beach with a background in Bachelor's in Computer Science, I continue to enhance my expertise in areas of Data & business analytics, Project management, and cyber security. 
+                        
+                        Actively engaged in the Women in Business club, I collaborate with fellow female leaders in IT, fostering networks and advocating for diversity in the field. </b> <span class="fa fa-beer" aria-hidden="true"></span></p>
 					<div class="button-group">
-						<div class="text">Download CV</div>
-						<div class="icon-cv"><a href="http://marinamarques.pt/assets/MarinaMarques_CV.pdf" alt="Marina Marques CV" target="_blank"><span class="fa fa-arrow-circle-down" aria-hidden="true"></span></a></div>
+						<div class="text">Contact her</div>
+						<div class="icon-cv"><a href="mailto:vsonmore@gmail.com;VishakhaMaruti.Sonmore01@student.csulb.edu" alt="Marina Marques CV" target="_blank"><span class="fa fa-arrow-circle-down" aria-hidden="true"></span></a></div>
 					</div>
 				</div>
 			</div>
@@ -1262,27 +1872,41 @@ footer a:visited footer a:focus {
 		<!-- end container about -->
 		<!-- start count stats -->
 		<section id="counter-stats">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 stats">
-						<span class="fa fa-code" aria-hidden="true"></span>
-						<div class="counter" data-count="900000">0</div>
+			<div class="container" style="background: url(https://i.gifer.com/J59.gif) no-repeat top center scroll;
+            background-size: cover;
+            -o-background-size: cover;
+            color:white;" >
+				<div class="row" style="padding-top: 30px;padding-bottom:30px;">
+					<div class="col-lg-4 stats">
+                        <span class="fa fa-user" aria-hidden="true"></span>
+						<div class="counter" data-count="900000">4+ Years</div>
+						<h5>Professional Work Experience</h5>
+					</div>
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa-globe" aria-hidden="true"></span>
+						<div class="counter" data-count="999">2+ Years</div>
+						<h5>International Work (Europe, APAC, usa) </h5>
+					</div>
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa fa-bookmark" aria-hidden="true"></span>
+						<div class="counter" data-count="999">20+ </div>
+						<h5>Projects</h5>
+					</div> <p></p><br><br>
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa-code" aria-hidden="true"></span>
+						<div class="counter" data-count="999">50k +</div>
 						<h5>Lines of code</h5>
 					</div>
-					<div class="col-lg-3 stats">
-						<span class="fa fa-check" aria-hidden="true"></span>
-						<div class="counter" data-count="280">0</div>
-						<h5>Projects done</h5>
+					
+					<div class="col-lg-4 stats">
+                        <span class="fa fa-search" aria-hidden="true"></span>
+						<div class="counter" data-count="999">2</div>
+						<h5>Research & Patent</h5>
 					</div>
-					<div class="col-lg-3 stats">
-						<span class="fa fa-user" aria-hidden="true"></span>
-						<div class="counter" data-count="75">0</div>
-						<h5>Happy clients</h5>
-					</div>
-					<div class="col-lg-3 stats">
-						<span class="fa fa-coffee" aria-hidden="true"></span>
-						<div class="counter" data-count="999">0</div>
-						<h5>Cups of coffee</h5>
+                    <div class="col-lg-4 stats">
+                        <span class="fa fa-coffee" aria-hidden="true"></span>
+						<div class="counter" data-count="999">999</div>
+						<h5>Cup of Coffees :P</h5>
 					</div>
 				</div>
 				<!-- end row counter stats -->
@@ -1293,43 +1917,94 @@ footer a:visited footer a:focus {
 	</section>
 	<!-- end about me -->
 	<!-- start work experience -->
+   
 	<section id="experience">
-		<div class="container">
+		<div class="container" style="background-color: rgb(245, 244, 243);box-shadow: 10px 10px 20px lightblue;">
 			<h2>EXPERIENCE</h2>
 			<div class="experience-ct">
 				<div class="row">
 					<div class="col-md-6 timeline-label">
-						<h4>key areas</h4>
-						<p>front end development, wordpress development and SEO improvement.</p>
-						<a href="https://pt.linkedin.com/in/marinamarques9" alt="LinkedIn profile" target="_blank">
-							<div class="button-group-li">
-								<div class="text-timeline">View on LinkedIn</div>
-								<div class="icon-li"><span class="fa fa-linkedin" aria-hidden="true"></span></div>
-							</div>
-						</a>
-					</div>
+						<div class="w3-card-4">
+                            <div class="w3-container w3-theme w3-card">
+                              <h1>Education</h1>
+                            </div>
+                            
+                            <div class="w3-container w3-text-theme">
+                            <h2>Academics</h2></div>
+                            
+                            <ul class="w3-ul w3-border-top">
+                              <li class="w3-theme-l5">
+                              <a class="w3-button w3-xlarge w3-circle w3-theme-action"
+                              style="position:fixed;top:48px;right:24px;">+</a>
+                              <p><b style="color: rgb(97, 96, 96);">Master of Science Information Systems </b><br>California State University Long Beach, CA 
+                                <br>Expected : May 2025
+                              </p>
+                              </li>
+                              <li class="w3-theme-l4">
+                                <p><b>Bachelor of Engineering </b><br>Computer Engineering, Mumbai University, India 
+                                    <br> Completed : May 2018</p>
+                              </li>
+                                                     
+                            </ul>
+                            </div>
+
+                       
+                         <br>
+                         <div class="w3-card-4">
+                            <div class="w3-container w3-theme w3-card">
+                              <h1>Tools & Technologies</h1>
+                            </div>
+                            
+                            <div class="w3-container w3-text-theme">
+                                <h2>Skilled in</h2>
+                                <ul class="w3-ul w3-border-top">
+                                    <li class="w3-theme-l5">
+                                    <a class="w3-button w3-xlarge w3-circle w3-theme-action"
+                                    style="position:fixed;top:48px;right:24px;">+</a>
+                                    <b>Languages/Frameworks:</b> Python, Java, C#, Sql, Flask
+                                    </li>
+                                    <li class="w3-theme-l4">
+                                      <b>Operating Systems/Servers: </b>Linux, Windows, IIS, iOS
+                                    </li>
+                                    <li class="w3-theme-l3">
+                                      <b>Database Management :</b> MySQL, PostgreSQL
+                                    </li>
+                                    <li class="w3-theme-l2">
+                                      <b>Web Development:</b> HTML, CSS, JavaScript, RESTful Web services 
+                                    </li>
+                                    <li class="w3-theme-l1">
+                                      <b>Tools:</b> Tableau, AWS EC2, Git, Eclipse, Jupyter, JIRA, ServiceNow, Salesforce, Track Wizz, Clarity, VMS, MS Project, ALM 
+                                    </li>
+                                    <li class="w3-theme-l1">
+                                      <b>Miscellaneous :</b> Adv. Excel, MS PowerPoint, Smartsheet, Confluence, SharePoint, JSON, XML, Agile, Scrum, Lightcast
+                                    </li>
+                                   
+                                  </ul>
+                                  </div>
+      
+                          </div>
+                          <p></p><br> 
+                            </div>
+                            
+                            
 					<div class="col-md-6 timeline col-exp">
 						<div class="timeline-year">
-							<time datetime="2016">2016</time>
-							<div class="timeline-experience">
-								<span class="timeline-circle"></span>
-								<div class="timeline-experience-img"><img src="http://marinamarques.pt/img/bnp_paribas.png" alt="BNP Paribas"></div>
-								<div class="timeline-experience-info clear-after">
-									<h5>BNP Paribas</h5>
-									<div class="timeline-role">Team Manager & Front End Developer</div>
-									<p>January 2016 - Present</p>
-								</div>
-								<!-- experience-info -->
-							</div>
+							
 							<!-- experience -->
-							<time datetime="2015">2015</time>
+							<time datetime="2015">2023-24</time>
 							<div class="timeline-experience">
 								<span class="timeline-circle"></span>
-								<div class="timeline-experience-img"><img src="http://marinamarques.pt/img/bnp_paribas.png" alt="BNP Paribas"></div>
+								<div class="timeline-experience-img"><img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/CSULB.png" alt="BNP Paribas"></div>
 								<div class="timeline-experience-info clear-after">
-									<h5>BNP Paribas</h5>
-									<div class="timeline-role">Jr. Front End Developer & Content Administrator</div>
-									<p>May 2015 - December 2015</p>
+									<h5>California State University </h5>
+									<div class="timeline-role">Graduate Student Assistant</div>
+                                        
+                                       <b style="color:rgb(0, 0, 0);font-size:12px;">Oct 2023 - Present</b>
+                                        <br> <div style="color:rgb(1, 7, 7);font-size:12px;">CPaCE - Student Assistant
+                                         <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;">
+                                            Conducted comprehensive research and data analysis on 50+ programs across CSU, utilizing Smartsheet, SQL, and Salesforce; optimized program offerings resulting in a 18% increase in student enrolment and retention rates.                                            
+                                        </div>
+                                        </div>
 								</div>
 								<!-- experience-info -->
 							</div>
@@ -1337,26 +2012,90 @@ footer a:visited footer a:focus {
 						</div>
 						<!-- year -->
 						<div class="timeline-year timeline-year1">
-							<time datetime="2014">2014</time>
+							<time datetime="2014">2023</time>
 							<div class="timeline-experience">
 								<span class="timeline-circle"></span>
-								<div class="timeline-experience-img"><img src="http://marinamarques.pt/img/paginas_amarelas.png" alt="Páginas Amarelas"></div>
+								<div class="timeline-experience-img"><img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/Ergo-logo.png" alt="Páginas Amarelas"></div>
 								<div class="timeline-experience-info clear-after">
-									<h5>Páginas Amarelas</h5>
-									<div class="timeline-role">Internal Communication Technician</div>
-									<p>March 2014 - May 2015</p>
+									<h5>Ergo Technologies & Service Pvt. Lim </h5>
+									<div class="timeline-role">IT Security Portfolio - Project Management Office</div>
+                                        
+                                       <b style="color:rgb(4, 4, 5);font-size:12px;">Jan 2023 - Aug 2023</b>
+                                        <br> <div style="color:rgb(1, 7, 7);font-size:12px;"><b style="color:rgb(237, 21, 21);font-size:14px;">(Upgraded)</b>  Manager - Project Management
+                                         <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;">
+                                            Led sprint planning and execution for revamping the MVP, resource management, vendor contract renewals, optimizing UI and navigation for Power BI reports, resulting in a 40% increase in user engagement.
+                                            Created rate agreements, SOW, SOP, MSA, PO, ROI, project plans, benchmarking targets to streamline technical trade-offs.
+
+                                            
+                                        </div>
+                                        </div>
 								</div>
 								<!-- experience-info -->
 							</div>
+                            
 							<!-- experience -->
-							<time datetime="2013">2013</time>
+							<time datetime="2013">2022</time>
 							<div class="timeline-experience">
 								<span class="timeline-circle"></span>
-								<div class="timeline-experience-img"><img src="http://marinamarques.pt/img/paginas_amarelas.png" alt="Páginas Amarelas"></div>
+								<div class="timeline-experience-img"><img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/800px-National_Stock_Exchange_of_India_29.png" alt="Páginas Amarelas"></div>
 								<div class="timeline-experience-info clear-after">
-									<h5>Páginas Amarelas</h5>
-									<div class="timeline-role">Jr. Web Developer & Content Producer</div>
-									<p>February 2013 - March 2014</p>
+									<h5>National Stock Exchange India </h5>
+									<div class="timeline-role">Trading IT - Project Management</div>
+                                        
+                                       
+                                        <b style="color:rgb(14, 14, 16);font-size:12px;">Jun 2022 - Oct 2022</b>
+                                        <br> <div style="color:rgb(1, 7, 7);font-size:12px;"><b style="color:rgb(237, 21, 21);font-size:14px;">(Upgraded)</b> Assistant Manager - Program Management
+                                         <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;">
+                                            Coordinate project management, process compliance, budgeting, procurement, risk management, and disaster recovery within Trading IT, including resource allocation, procurement management collaborating on backlogs and new requests, and overseeing vendor activities such as RFP processes and procurement management.
+                                            
+                                            
+                                        </div>
+                                        </div>
+								</div>
+								<!-- experience-info -->
+							</div>
+                            <time datetime="2016">2018-22</time>
+							<div class="timeline-experience">
+								<span class="timeline-circle"></span>
+								<div class="timeline-experience-img"><img src="http://marinamarques.pt/img/bnp_paribas.png" alt="BNP Paribas"></div>
+								<div class="timeline-experience-info clear-after">
+									<h5>BNP Paribas India Solutions Pvt. Lim</h5>
+									<div class="timeline-role">Support Analyst & ITSM Manager</div>
+                                        
+                                       <br> <b style="color:rgb(11, 11, 12);font-size:12px;">Apr 2021 - Jun 2022</b>
+                                        <br> <div style="color:rgb(1, 7, 7);font-size:12px;"><b style="color:rgb(237, 21, 21);font-size:14px;">(Promoted)</b> Senior  Analyst - Project Coordinator
+                                            <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;"> 
+                                                Provide assistants and administer support to Project managers, Senior management for individual project management tasks.
+                                                Process Improvement: Responsible for standardization of methods, processes and tools for all trading projects in department.
+                                                Arranging trainings for project team, program level initiative whenever required by associating with professionals & vendors.
+                                            </div>  
+                                        </div>
+                                           
+                                        <br> <b style="color:rgb(2, 2, 3);font-size:12px;">Apr 2020 - Mar 2021</b>
+                                        <br> <div style="color:rgb(1, 7, 7);font-size:12px;"><b style="color:rgb(237, 21, 21);font-size:14px;">(Promoted)</b> Senior Associate Analyst
+                                         <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;">
+                                            Responsible to lead data analytics & MIS team of 2, accountable to ensuring data quality, Preparing the steering board & key performance matrix dashboards, data crunching, distribution of strategic information, effort estimation, productivity assessments.                                         </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        <br> <b style="color:rgb(8, 9, 10);font-size:12px;">Apr 2019 - Mar 2020</b>
+                                        <br> <div style="color:rgb(1, 7, 7);font-size:12px;"><b style="color:rgb(237, 21, 21);font-size:14px;">(Promoted)</b> Support Analyst - IT Service Management
+                                         <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;">
+                                            IT Service Management: Drive end to end ITIL incident & problem management, drive major incident bridge calls, higher management & customer communication, perform root cause analysis, risk assessment, long term solutions, leading audits. 
+                                         </div>
+                                        </div>
+                                        
+                                        
+                                        <br> <b style="color:rgb(9, 9, 10);font-size:12px;">Jun 2018 - Mar 2019</b>
+                                       <br> <div style="color:rgb(1, 7, 7);font-size:12px;">Associate Support Analyst - (Web developer)
+                                        <div style="color:rgb(132, 132, 132);font-size:12px;padding-top:0px;">Outline: - Involved & handled end-to-end delivery of multiple infrastructure automation projects using agile project management methodologies.
+                                            Tools: Service now, VB, PowerShell, SharePoint, JS, HTML, Bootstrap, CSS, Dot NET, SQL</div>
+                                       </div>
+                                      <p></p>
+                                      <p></p>
+                                    </div>
+									
 								</div>
 								<!-- experience-info -->
 							</div>
@@ -1373,121 +2112,36 @@ footer a:visited footer a:focus {
 	</section>
 	<!-- end work experience -->
 	<!-- start work portfolio -->
-	<section id="portfolio">
-		<div class="container-fluid portfolio-ct">
-			<h2>PORTFOLIO</h2>
-			<div class="row">
-				<!-- start first portfolio item -->
-				<div class="col-sm-6 col-md-4 grid-portfolio">
-					<div class="portfolio-item-ct">
-						<div class="thumbnail">
-							<img src="http://marinamarques.pt/img/work-ibvmx.png" alt="Portfolio - IBV MEXICO" class="img-responsive">
-							<div class="textbox-portfolio">
-								<div class="button-weblink">
-									<a href="https://ibv-mx.bnpparibas.com/" alt="Portfolio - IBV MEXICO" target="_blank"><span class="fa fa-link portfolio-link" aria-hidden="true"></span></a>
-								</div>
-							</div>
-						</div>
-						<div class="caption portfolio-details">
-							<h3>IBV MEXICO</h3>
-							<p>Responsive website done for BNP Paribas CIB using Wordpress.
-								<br> Child theme developed based on a free theme.
-							</p>
-							<ul class="portfolio-tags">
-								<li class="portfolio-tag">WORDPRESS</li>
-								<li class="portfolio-tag">CHILD THEME</li>
-								<li class="portfolio-tag">SEO</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- end first portfolio item -->
-				<!-- start second portfolio item -->
-				<div class="col-sm-6 col-md-4 grid-portfolio">
-					<div class="portfolio-item-ct">
-						<div class="thumbnail">
-							<img src="http://marinamarques.pt/img/work-areyoufeelinglow.png" alt="Portfolio - ARE YOU FEELING LOW?" class="img-responsive">
-							<div class="textbox-portfolio">
-								<div class="button-weblink">
-									<a href="https://shvvffle.github.io/areyoufeelinglow/" target="_blank" alt="Portfolio - ARE YOU FEELING LOW?"><span class="fa fa-link portfolio-link" aria-hidden="true"></span></a>
-								</div>
-							</div>
-						</div>
-						<div class="caption portfolio-details">
-							<h3>ARE YOU FEELING LOW?</h3>
-							<p>Landing page with a compliment generator
-								<br> using Javascript.
-							</p>
-							<ul class="portfolio-tags">
-								<li class="portfolio-tag">HTML5 / CSS3</li>
-								<li class="portfolio-tag">BOOTSTRAP</li>
-								<li class="portfolio-tag">JAVASCRIPT</li>
-								<li class="portfolio-tag">SEO</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- end second portfolio item -->
-				<!-- start third portfolio item -->
-				<div class="col-sm-6 col-md-4 grid-portfolio">
-					<div class="portfolio-item-ct">
-						<div class="thumbnail">
-							<img src="http://marinamarques.pt/img/work-personalWebsite.png" alt="Portfolio - PERSONAL WEBSITE" class="img-responsive">
-							<div class="textbox-portfolio">
-								<div class="button-weblink">
-									<a href="#" alt="Portfolio - PERSONAL WEBSITE"><span class="fa fa-link portfolio-link" aria-hidden="true"></span></a>
-								</div>
-							</div>
-						</div>
-						<div class="caption portfolio-details">
-							<h3>PERSONAL WEBSITE</h3>
-							<p>Responsive website
-								<br> using Bootstrap.
-							</p>
-							<ul class="portfolio-tags">
-								<li class="portfolio-tag">HTML5 / CSS3</li>
-								<li class="portfolio-tag">BOOTSTRAP</li>
-								<li class="portfolio-tag">JAVASCRIPT</li>
-								<li class="portfolio-tag">SEO</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- end third portfolio item -->
-			</div>
-			<!-- end row portfolio -->
-		</div>
-		<!-- end container portfolio -->
-	</section>
-	<!-- end work portfolio -->
-	<!-- start services -->
+    <!---->
+	
 	<section id="services">
 		<div class="container">
-			<h2>SERVICES</h2>
+			<h2 id="services">social presence </h2>
 			<div class="row">
 				<div class="ct-services">
 					<div class="col-md-4 services-item">
 						<div class="rotate">
-							<span class="fa fa-code" aria-hidden="true"></span>
+							<a href="https://github.com/Vishakha401"><span class="fa fa-github" aria-hidden="true"></span></a>
 							<!-- <i class="fa fa-file-code-o fa-wrapper" aria-hidden="true"></i> -->
 						</div>
-						<h3>Front End Development</h3>
-						<p>Development of responsive websites, cross-browser and cross-platform testing.</p>
+						<h3><a href="https://github.com/Vishakha401">Github</a></h3>
+						<p>Enthusiastic about merging project management expertise with data analytics to drive informed decision-making.</p>
 					</div>
 					<div class="col-md-4 services-item">
 						<div class="rotate">
-							<span class="fa fa-wordpress fa-wrapper" aria-hidden="true"></span>
+							<a href="https://www.linkedin.com/in/vishakhasonmore/"><span class="fa fa-linkedin-square" aria-hidden="true"></span></a>
 						</div>
-						<h3>Wordpress Development</h3>
-						<p>Custom development (website, theme & plugin), hosting and maintenance.</p>
+                        <h3><a href="https://www.linkedin.com/in/vishakhasonmore/">Linkedin</a></h3>
+                        						<p>Tailoring my professional journey and sharing with community</p>
 					</div>
 					<div class="col-md-4 services-item">
 						<div class="rotate">
-							<span class="fa fa-line-chart" aria-hidden="true"></span>
+							<a href="https://www.instagram.com/ramble.rover?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><span class="fa fa-instagram" aria-hidden="true"></span></a>
 							<!-- <i class="fa fa-search fa-wrapper" aria-hidden="true"></i>-->
 						</div>
-						<h3>Search Engine Optimization</h3>
-						<p>Increase your visibility across all major search engines & local search with SEO techniques.</p>
+						<h3><a href="https://www.instagram.com/ramble.rover?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">Fearless vlogger</a></h3>
+						<p>RAMBLE ROVER : Implying free-spirited exploration gives off a sense of adventurous and nomadic storytelling.
+</p>
 					</div>
 				</div>
 				<!-- end row of services -->
@@ -1501,17 +2155,12 @@ footer a:visited footer a:focus {
 	<section id="testimionals">
 		<div class="testimionals-bg">
 			<div class="container testimionals-bg-opacity">
-				<h2>TESTIMONIALS</h2>
+				<h2 style="padding-top:20px;">Personal & Professional <b style="background-color:#008080"> Projects </b></h2>
 				<div><span class="fa fa-quote-left quotes" aria-hidden="true"></span>
 				</div>
 				<div id="slider-testimionals" class="carousel slide" data-ride="carousel">
 					<!-- indicators dot nav -->
-					<ol class="carousel-indicators">
-						<li data-target="#slider-testimionals" data-slide-to="0" class="active"></li>
-						<li data-target="#slider-testimionals" data-slide-to="1"></li>
-						<li data-target="#slider-testimionals" data-slide-to="2"></li>
-						<li data-target="#slider-testimionals" data-slide-to="3"></li>
-					</ol>
+					
 					<!-- wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<!-- start first testimional -->
@@ -1519,48 +2168,24 @@ footer a:visited footer a:focus {
 							<div class="row">
 								<div class="col-md-6 col-md-offset-3">
 									<div class="carousel-caption">
-										<p>Marina is always ready to accomplish the impossible in record time.</p>
-										<p class="client">Emilien, Marketing department - BNP Paribas</p>
-									</div>
+										<p>"She advocates for learning through practical experience, and these projects demonstrate my preference for hands-on learning."</p>
+									<br>
+                                    <a href="https://vishakha401.github.io/projectlist/" style="font-size: 14px;">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                      <b>View Projects</b> 
+                                    </a>
+                                    
+                                    </div>
+                              
+                               
 								</div>
 							</div>
 						</div>
-						<!-- end first testimional -->
-						<!-- start second testimional -->
-						<div class="item">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3">
-									<div class="carousel-caption">
-										<p>She's the fastest person in BNPP! Quick as lightning with robust solutions.</p>
-										<p class="client">Rogier, Sales department - BNP Paribas</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- end second testimional -->
-						<!-- start third testimional -->
-						<div class="item">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3">
-									<div class="carousel-caption">
-										<p>She shows real commitment and demonstrates entrepreneurship skills as well as innovation abilities.</p>
-										<p class="client">Gillian, Manager - BNP Paribas</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- end third testimional -->
-						<!-- start fourth and last testimional -->
-						<div class="item">
-							<div class="row">
-								<div class="col-md-6 col-md-offset-3">
-									<div class="carousel-caption">
-										<p>She doesn't give up until she finds a solution for what seems to be impossible.</p>
-										<p class="client">Ana, Manager - Páginas Amarelas</p>
-									</div>
-								</div>
-							</div>
-						</div>
+					
+						
 						<!-- end fourth and last testimional -->
 					</div>
 					<!-- end carousel -->
@@ -1571,18 +2196,259 @@ footer a:visited footer a:focus {
 		<!-- end div container testimionals -->
 	</section>
 	<!-- end testimionals -->
+
+    <section id="cert">
+        <div class="container" style="padding-top: 20px;">
+			<h2 style="text-align: center;"> Honors & Professional Certifications</h2>
+			<div class="ag-format-container">
+                <div class="ag-courses_box">
+                  
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Analytics
+                        <div style="font-size: 14px;padding-top:0px;color:white;font-weight:normal">
+                            <p></p>1. AWS foundation
+                            <p></p>2. Six Sigma (Green & Black Belt)
+                            <p></p>3. Advance Microsoft Excel
+                            <p></p>4. Tableau Foundation (On-going)
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Leadership & Project Management
+                        <div style="font-size: 14px;padding-top:0px;color:white;font-weight:normal">
+                            <p></p>1. Google Foundation of Project management
+                            <p></p>2. Agile Project Management  
+                            <p></p>3. Practical Leadership Skills
+                         
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+              
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+                      <div class="ag-courses-item_title">
+                        Other <br>Expertise
+                        <div style="font-size: 14px;padding-top:0px;color:white;font-weight:normal">
+                            <p></p>1. Alteryx Datathon Participant
+                            <p></p>2. Microsoft cyber security analyst 
+                            <p></p>3. ITIL Foundation, IT Service management 
+                         
+                          </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Research Publication
+                        <p></p>
+                        <div style="font-size: 14px;padding-top:0px;color:white;font-weight:normal">
+                            <p></p>Paper: Procurement of raw material using NFC, IJARTET, Volume 5, Special Issue 3 
+                            <p></p>International Journal of Advance research trends in engineering and Technology
+                        </div>
+                      </div>
+              
+                    </a>
+                  </div>
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title">
+                        Professional Awards <p></p>
+                        <div style="font-size: 14px;padding-top:0px;color:white;font-weight:normal">
+                            <p></p>1. Achiever Award - BNP Paribas  (2022)
+                            <p></p>2. SPOT Award - BNP Paribas (2021)
+                            <p></p>3. BRAVO Award - BNP Paribas  (2020)
+                          
+                          </div>
+                      </div>
+              
+                      
+                    </a>
+                  </div>
+                  <div class="ag-courses_item">
+                    <a href="#" class="ag-courses-item_link">
+                      <div class="ag-courses-item_bg"></div>
+              
+                      <div class="ag-courses-item_title" style="padding-bottom: 0px;">
+                        Academic Honors
+                        <div style="font-size: 14px;padding-top:0px;color:white;font-weight:normal">
+                            <p></p>1. Academic Excellence : Department of Computer Science, RGIT, India (2018)
+                            <p></p>2. Student of the year : Department of Computer Science, RGIT, India (2017)
+                          </div>
+                      </div>
+                     
+                      
+                    </a>
+                  </div>
+                 
+              
+                         
+              
+                 
+              
+                </div>
+              </div>
+            
+
+        </div>
+    </section>
+
+    <section id="leadership">
+        
+            <div class="container" style="padding-top: 20px;">
+                <h2 style="text-align: center;"> Leadership Roles</h2>
+            </div>
+          
+            <section class="articles">
+                <article>
+                  <div class="article-wrapper">
+                    <figure>
+                      <img src="https://picsum.photos/id/1011/800/450" alt="" />
+                    </figure>
+                    <div class="article-body">
+                      <h2>International Student Association (ISA) – California State University, Long Beach, California, USA</h2>
+                      <p>
+                        <p style="font-size:22px;color:#008080">Director, Public Relationship Management</p>
+                        Oversea international student services engagement & developments.Worked closely with the Event Management team to make social media awareness for events.                                    </p>
+                        <a href="#" class="read-more">
+                           <span class="sr-only"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                              <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                          </a>
+                    </div>
+                  </div>
+                </article>
+                <article>
+              
+                  <div class="article-wrapper">
+                    <figure>
+                      <img src="https://picsum.photos/id/1005/800/450" alt="" />
+                    </figure>
+                    <div class="article-body">
+                      <h2>SOCH Foundation (non profitable -governmental organization) - Mumbai, INDIA</h2>
+                      <p>
+                        <p style="font-size:22px;color:#008080">Board Member</p>
+                        SOCH- Active core committee member was responsible for handling events for crowd of 2000+ students & faculty during multiple social service events like visiting Animal shelters, beach cleanup activity, visiting old age home, NGOs
+                      </p>
+                      <a href="#" class="read-more">
+                        <span class="sr-only"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+                <article>
+              
+                  <div class="article-wrapper">
+                    <figure>
+                      <img src="https://picsum.photos/id/103/800/450" alt="" />
+                    </figure>
+                    <div class="article-body">
+                      <h2>Lead MIS & Data Analytics - BNP Paribas Pvt. Lim, India</h2>
+                      <p>
+                        <p style="font-size:22px;color:#008080">Manager & Mentor</p>
+                        1. Directly managed team of 2 under Service Delivery team.
+                        <br>2. Mentored & trained 3 MCA interns on web development projects.
+                        <br>3. Mentored an intern diagnosed under the autism spectrum.
+                      </p>
+                      <a href="#" class="read-more">
+                         <span class="sr-only"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              </section>
+
+   </section>
+
+  <section id="nonc">
+    <div class="container" style="padding-top: 20px;">
+        <h2 style="text-align: center;"> Beyond curriculum</h2>
+        <div class="main">
+            <ul class="cards">
+              <li class="cards_item">
+                <div class="card">
+                  <div class="card_image"><img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/ashw.jpg" alt="mixed vegetable salad in a mason jar. "></div>
+                  <div class="card_content">
+                    <h2 class="card_title">Giving back to society</h2>
+                    <div class="card_text">
+                      <p>In my commitment to giving back to society, I took on multifaceted responsibilities encompassing mentorship, teaching, and problem-solving. These endeavours included guiding underprivileged children in subjects like Science and Art at Ashvamedha Foundation, raising hygiene awareness among girls in slum areas, and providing hands-on training to interns in various capacities, including Programming and Project Management.</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+          
+              <li class="cards_item">
+                <div class="card">
+                  <div class="card_image"><img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/drama.png" alt="a Reuben sandwich on wax paper. "></div>
+                  <div class="card_content">
+                    <h2 class="card_title">Drama - Stage Play</h2>
+                    <div class="card_text">
+                       <p>Embracing fearlessness, I eagerly joined a drama group where I found my voice and expression on stage. Winning the Intercollege contingent drama competitions twice was a testament to my dedication and skill, with my performances earning recognition as the best on-stage Female performer. Assuming pivotal roles as Head Director, Writer, and Organizer for contingent Drama/Stage Play productions, I led with creativity and precision, shaping unforgettable theatrical experiences.
+                    </p> 
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="cards_item">
+                <div class="card">
+                  <div class="card_image"><img src="https://raw.githubusercontent.com/Vishakha401/Portfolio/main/fs.png" alt="A side view of a plate of figs and berries. "></div>
+                  <div class="card_content">
+                    <h2 class="card_title">Audacious Fashion Show</h2>
+                    <div class="card_text">
+                      My fervor for stage productions transcends the boundaries of fashion, delving into the vibrant domain of fine art. It ignites a profound appreciation for creativity and expression across diverse artistic landscapes.                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+    </div>
+  </section> 
 	<!-- start footer -->
 	<footer id="contact">
 		<div class="container">
 			<div class="row">
 				<h2>CONTACT</h2>
-				<p>You can contact me at: 9.marques.marina[AT]gmail.com</p>
+				<p style="padding-top: 2px;">Happy to take the <b>feedback/guidance</b> if not the offer ! I take it positively ..... lets connect !</p>
+                <nav class="shelf">
+                    <a href="https://www.instagram.com/ramble.rover?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="book home-page">Instagram</a>
+                    <a href="https://www.linkedin.com/in/vishakhasonmore/"class="book about-us">Linkedin</a>
+                    <a href="mailto:vsonmore@gmail.com"class="book contact">Email</a>
+                    <a class="book faq">562-350-4799</a>
+                    
+                    <span class="book not-found"></span>
+                   
+                    <span class="door left"></span>
+                    <span class="door right"></span>
+                  </nav>
 				<br>
-				<div class="social">
-					<a href="https://codepen.io/shvvffle/" target="_blank" alt="CodePen profile"><span class="fa fa-codepen" aria-hidden="true"></span></a>
-					<a href="https://pt.linkedin.com/in/marinamarques9" target="_blank" alt="LinkedIn profile"><span class="fa fa-linkedin" aria-hidden="true"></i></a>
-					<a href="https://github.com/shvvffle" target="_blank" alt="GitHub profile"><span class="fa fa-github" aria-hidden="true"></span></a>
-				</div>
+				
+
+
+
 				<p id="copyright"></p>
 			</div>
 			<!-- end row contact -->
